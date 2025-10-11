@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://8wxkk4vg1fwb"]
+
+[ext_resource type="Script" uid="uid://cn2bdao3v2n2k" path="res://Grid/obstacle_1.gd" id="1_fig54"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_6xjfg"]
+size = Vector3(0.5, 0.7, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fig54"]
+albedo_color = Color(0.28857678, 0.00031701318, 0.3773342, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b1a1c"]
+size = Vector3(0.6843109, 0.99419403, 0.52493286)
+
+[node name="Obstacle1" type="Area3D"]
+collision_layer = 2
+script = ExtResource("1_fig54")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, -0.07845804, 0.49685293, 0)
+mesh = SubResource("PrismMesh_6xjfg")
+surface_material_override/0 = SubResource("StandardMaterial3D_fig54")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.070940346, 0.5118675, -0.020330682)
+shape = SubResource("BoxShape3D_b1a1c")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

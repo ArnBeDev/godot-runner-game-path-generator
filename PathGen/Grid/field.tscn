@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://crhwypq07osji"]
+
+[ext_resource type="Script" uid="uid://co3ff08tth4ij" path="res://Grid/field.gd" id="1_bhslj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bhslj"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ba3j"]
+albedo_color = Color(1.1431053e-07, 0.12695327, 0.1706002, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ywdy1"]
+size = Vector2(0.9, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72t2j"]
+albedo_color = Color(0, 0.17610782, 0.27063927, 1)
+
+[node name="Field" type="Node3D"]
+script = ExtResource("1_bhslj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0)
+mesh = SubResource("PlaneMesh_bhslj")
+surface_material_override/0 = SubResource("StandardMaterial3D_3ba3j")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ywdy1")
+surface_material_override/0 = SubResource("StandardMaterial3D_72t2j")

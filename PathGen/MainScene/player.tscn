@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://b53g8bai7ln57"]
+
+[ext_resource type="Script" uid="uid://dw23cmxxfd1er" path="res://MainScene/player.gd" id="1_dwjyy"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_dva2i"]
+size = Vector3(0.85, 0.85, 0.85)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwjyy"]
+albedo_color = Color(2.2621452e-05, 0.23935217, 0.6953682, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5skd"]
+size = Vector3(0.85, 0.85, 0.85)
+
+[node name="Player" type="Area3D"]
+collision_mask = 2
+script = ExtResource("1_dwjyy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_dva2i")
+surface_material_override/0 = SubResource("StandardMaterial3D_dwjyy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_f5skd")
+
+[node name="Corners" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42834002, 0.42946935, 0.43051007)
+
+[node name="Marker3D2" type="Marker3D" parent="Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42397362, 0.42946935, 0.43051007)
+
+[node name="Marker3D3" type="Marker3D" parent="Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42397362, -0.4311737, 0.4261852)
+
+[node name="Marker3D4" type="Marker3D" parent="Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42986363, -0.4311737, 0.4261852)
+
+[node name="Marker3D5" type="Marker3D" parent="Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42986363, -0.4311737, -0.43529895)
+
+[node name="Marker3D6" type="Marker3D" parent="Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42754197, -0.4311737, -0.43529895)
+
+[node name="Marker3D7" type="Marker3D" parent="Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42754197, 0.426806, -0.42972997)
+
+[node name="Marker3D8" type="Marker3D" parent="Corners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42782414, 0.426806, -0.42972997)

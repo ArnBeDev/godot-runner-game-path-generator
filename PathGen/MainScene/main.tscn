@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjte3d4t8jddy"]
+
+[ext_resource type="PackedScene" uid="uid://csfg7crkh522r" path="res://Grid/grid.tscn" id="1_8dj5j"]
+[ext_resource type="PackedScene" uid="uid://b53g8bai7ln57" path="res://MainScene/player.tscn" id="2_451ce"]
+[ext_resource type="Script" uid="uid://bmnv3lqfkdmb1" path="res://MainScene/ui.gd" id="3_451ce"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Grid" parent="." instance=ExtResource("1_8dj5j")]
+
+[node name="Player" parent="." instance=ExtResource("2_451ce")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-3.9964853e-08, 0.40506184, -0.91428936, 1.7705812e-08, 0.91428936, 0.40506184, 1, 0, -4.3711392e-08, -2.823142, 1.8469478, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.70008266, 0.35012293, -0.62233293, 0.5894784, 0.20848425, 0.78041625, 0.40298823, -0.9132077, -0.060433686, -1.7789816, 1.5258764, -1.4221929)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.028765738, -0.9034736, -0.4276774, 0.28748703, -0.40229934, 0.8691989, -0.95735264, -0.14795482, 0.24816461, -1.7789816, 1.8643066, 1.2978697)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_451ce")
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 32
