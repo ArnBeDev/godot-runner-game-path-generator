@@ -1,0 +1,98 @@
+
+
+@startuml
+
+title Generation Sequence
+
+[-> Grid: Godot _process() call
+
+activate Grid
+
+
+Grid -> Grid: move rows
+Grid -> Grid: rows reached next positon
+
+Grid -> PathGenerator : request next Row
+
+activate PathGenerator
+
+
+PathGenerator -> PathGenerator : _rows.size() == 0, prepare next segment
+PathGenerator -> PathGenerator : determine row width
+PathGenerator -> PathGenerator : determine segment type
+
+PathGenerator -> SegmentGenerator : generate next segment
+
+
+
+activate SegmentGenerator
+
+SegmentGenerator -> SegmentGenerator: create empty segment
+SegmentGenerator -> SegmentGenerator: set obstacles and incentives in segment
+
+SegmentGenerator -> PathGenerator: return Array[RowGenerated]
+
+deactivate SegmentGenerator
+
+PathGenerator -> PathGenerator: _rows.pop_front()
+
+
+
+PathGenerator -> Grid : return RowGenerated
+
+deactivate PathGenerator
+
+
+Grid -> Grid: create new_row:Row from RowGenerated
+
+
+activate Row
+
+Grid -> Row: pass Array[FieldGenerated]
+
+deactivate Row
+Grid -> Grid: add new_row to scene tree
+
+Row<-] : Godot _ready() call
+
+activate Row
+Row -> Row: create Array[Field]
+activate Field
+
+Row -> Field: pass SpawnType
+
+deactivate Field
+
+Row -> Row: add_child(Array[Fields])
+
+Field<-] : Godot _ready() call
+
+activate Field
+
+
+
+Field -> Field: set position
+
+Field -> Field: spawn object
+
+
+
+
+
+
+Grid -> Grid: delete FieldGenerated and RowGenerated
+deactivate Row
+
+deactivate Field
+
+Grid -> Grid: delete the last Row in the Grid
+
+
+
+[<- Grid: _process() end
+
+
+deactivate Grid
+
+@enduml
+
