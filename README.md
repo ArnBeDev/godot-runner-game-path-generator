@@ -21,7 +21,7 @@ This project contains a shorted version with the base concepts of the generator.
  - Row - actual visible Row, consists of Fields
  - SpawnType - used to determine if and which object a Field should contain
  - Grid - contains Rows and moves them
- - PathGenerator - decides the segment type and row-width.
+ - PathGenerator - decides the segment type and row-width
  - SegmentGenerator - creates Segments of different types
 
 Other classes like Player, UI, obstacles or incentives are used for better showcase but are not required to generate the endless path.
