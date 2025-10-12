@@ -23,28 +23,16 @@ func _process(delta: float) -> void:
 func movement(delta) -> void:
 	var current_row:Row = Globals.grid.get_player_row()
 	
-	var border_right:float
-	var border_left:float 
-	
-	## determine the area where the player can move
-	if current_row.fields.size() % 2 == 1:
-		if current_row.fields.size() == 1:
-			border_right = 0.5
-			border_left = -0.5
-		else:
-			border_right = (current_row.fields.size() -1.5) - 0.5
-			border_left = ((current_row.fields.size() -1.5)* -1) +0.5
-	else:
-		border_right = (current_row.fields.size() / 2) + 0.5
-		border_left = (border_right - 1.0) * -1
-			
 	if move_right:
 		global_position.z += delta * side_speed
 		
 	elif move_left:
 		global_position.z -= delta * side_speed
 	
-	global_position.z = clampf(global_position.z, border_left,border_right)
+	if current_row.fields.size() == 1:
+		global_position.z = 0.0
+	else:
+		global_position.z = clampf(global_position.z, current_row.left_border + 0.5, current_row.right_border-0.5)
 	
 	if is_jumping:
 		current_upward_speed += my_gravity *delta
